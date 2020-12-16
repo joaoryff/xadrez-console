@@ -1,5 +1,6 @@
 ﻿using System;
 using tabuleiro;
+using xadrez_console.tabuleiro;
 using xadrez_console.xadrez;
 
 namespace xadrez_console
@@ -13,13 +14,21 @@ namespace xadrez_console
             //P = new Posicao(3, 4);
 
             //Console.WriteLine("Posicao: " + P);
-            Tabuleiro tab = new Tabuleiro(8, 8);
+            try
+            {
 
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(0, 0));
-            tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(1, 3));
-            tab.colocarPeca(new Rei(Cor.Preta, tab), new Posicao(2, 4));
+                Tabuleiro tab = new Tabuleiro(8, 8);
 
-            Tela.imprimirTabuleiro(tab);
+                tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(0, 0));
+                tab.colocarPeca(new Torre(Cor.Preta, tab), new Posicao(1, 3));
+                tab.colocarPeca(new Rei(Cor.Preta, tab), new Posicao(2, 9));
+
+                Tela.imprimirTabuleiro(tab);
+            }
+            catch (TabuleiroException e)
+            {
+                Console.WriteLine(e.Message);
+            }
             Console.ReadLine();
 
         }
