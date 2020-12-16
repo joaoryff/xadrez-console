@@ -1,6 +1,6 @@
 ﻿
 
-using xadrez_console.tabuleiro;
+
 
 namespace tabuleiro
 {
