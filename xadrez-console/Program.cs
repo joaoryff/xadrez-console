@@ -2,31 +2,24 @@
 using tabuleiro;
 using xadrez;
 
-
 namespace xadrez_console
 {
     class Program
     {
         static void Main(string[] args)
         {
-            //Posicao P;
 
-            //P = new Posicao(3, 4);
-
-            //Console.WriteLine("Posicao: " + P);
             try
             {
-
                 PartidaDeXadrez partida = new PartidaDeXadrez();
+
                 while (!partida.terminada)
                 {
+
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.turno);
-                        Console.WriteLine("Aguardando jogada: " + partida.jogadorAtual);
+                        Tela.imprimirPartida(partida);
 
                         Console.WriteLine();
                         Console.Write("Origem: ");
@@ -38,6 +31,7 @@ namespace xadrez_console
                         Console.Clear();
                         Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
+                        Console.WriteLine();
                         Console.Write("Destino: ");
                         Posicao destino = Tela.lerPosicaoXadrez().toPosicao();
                         partida.validarPosicaoDeDestino(origem, destino);
@@ -46,27 +40,19 @@ namespace xadrez_console
                     }
                     catch (TabuleiroException e)
                     {
-
                         Console.WriteLine(e.Message);
                         Console.ReadLine();
                     }
-
                 }
-
-                Tela.imprimirTabuleiro(partida.tab);
+                Console.Clear();
+                Tela.imprimirPartida(partida);
             }
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
             }
-            //PosicaoXadrez pos = new PosicaoXadrez('c', 7);
-
-            //Console.WriteLine(pos);
-
-            //Console.WriteLine(pos.toPosicao());
 
             Console.ReadLine();
-
         }
     }
 }
